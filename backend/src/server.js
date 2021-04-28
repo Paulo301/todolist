@@ -15,6 +15,9 @@ const database = require('./db');
 (async () => {
   try {
     const resultado = await database.sync();
+    const User = require('./user');
+    await User.sync({ force: true });
+    
     // console.log(resultado);
   } catch (error) {
     // console.log(error);
@@ -24,7 +27,22 @@ const database = require('./db');
 app.post("/user", (req, res) => {
   console.log(req.body);
 
-  res.send("");
+  const create = async () => {
+    const User = require('./user');
+    try {
+      const resultadoCreate = await User.create({
+        email: req.body.email,
+        senha: req.body.senha
+      });
+
+      console.log(resultadoCreate);
+      res.send("");
+    } catch (error){
+      console.log(error);
+    }
+  }
+
+  create();
 });
 
 app.post("/user/login", (req, res) => {

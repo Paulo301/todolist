@@ -9,8 +9,7 @@ const User = database.define('user', {
         primaryKey: true
     },
     email: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
     },
     senha: {
         type: Sequelize.STRING

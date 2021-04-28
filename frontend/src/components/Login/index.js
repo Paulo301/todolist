@@ -12,7 +12,7 @@ function Login(props) {
 
   const handleSubmit = (event) =>{
     event.preventDefault();
-    userApi.login(event.target[0].value, event.target[1].value);
+    userApi.createUser(event.target[0].value, event.target[1].value);
     // props.handleCurrentUser(event.target[0].value);
     // console.log(event.target[0].value);
   }
@@ -22,7 +22,7 @@ function Login(props) {
       <TextField id="email-field" label="Email" className={classes.email} />
       <TextField id="password-field" label="Password" type="password" className={classes.password} />
       <Button variant="contained" color="primary" type='submit' style={{ width: 500, height: 40, marginTop: 20 }} >
-        Entrar
+        Cadastrar
       </Button>
     </form>
   );

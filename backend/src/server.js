@@ -1,29 +1,62 @@
-// const database = require('./db');
+const cors = require('cors');
 
-// (async () => {
-//   try {
-//     const resultado = await database.sync();
-//     console.log(resultado);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// })();
+const express = require('express');
+
+const app = express();
+
+const porta = 3333;
+
+app.use(cors());
+
+app.use(express.json());
+
+const database = require('./db');
 
 (async () => {
-    const database = require('./db');
-    const User = require('./user');
- 
-    try {
-        const resultado = await database.sync();
-        console.log(resultado);
- 
-        const resultadoCreate = await User.create({
-            nome: 'mouse',
-            preco: 10,
-            descricao: 'Um mouse USB bonitão'
-        })
-        console.log(resultadoCreate);
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    const resultado = await database.sync();
+    // console.log(resultado);
+  } catch (error) {
+    // console.log(error);
+  }
 })();
+
+app.post("/user", (req, res) => {
+  console.log(req.body);
+
+  res.send("");
+});
+
+app.post("/user/login", (req, res) => {
+  console.log(req.body);
+
+  res.send("");
+});
+
+app.get("/todo", (req, res) => {
+  console.log(req.body);
+
+  res.send("");
+});
+
+app.post("/todo", (req, res) => {
+  console.log(req.body);
+
+  res.send("");
+});
+
+app.put("/todo", (req, res) => {
+  console.log(req.body);
+
+  res.send("");
+});
+
+app.delete("/todo", (req, res) => {
+  console.log(req.body);
+
+  res.send("");
+});
+
+app.listen(porta, () =>{
+  console.log("Iniciado");
+})
